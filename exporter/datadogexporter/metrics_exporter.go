@@ -88,10 +88,10 @@ func (exp *metricsExporter) PushMetricsData(ctx context.Context, md pdata.Metric
 	for _, cMs := range chunks {
 		err := exp.client.PostMetrics(cMs)
 		if err != nil {
-			return droppedTimeSeries, err
+			return err
 		}
 
 	}
 
-	return droppedTimeSeries, nil
+	return nil
 }
